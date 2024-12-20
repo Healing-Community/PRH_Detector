@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import google.generativeai as genai
 from dotenv import load_dotenv
+from flask_cors import CORS
 import os
 
 # Load environment variables from .env file
@@ -9,6 +10,8 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')    
 
 app = Flask(__name__)
+
+CORS(app)
 
 # Cấu hình Gemini API
 genai.configure(api_key=GEMINI_API_KEY)
